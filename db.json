@@ -1,0 +1,28 @@
+{
+  "chamados": [
+    {
+      "id": "1",
+      "titulo": "Instalação do VS Code",
+      "descricao": "O notebook do novo estagiário precisa da instalação do VS Code e do Node.js.",
+      "prioridade": "alta",
+      "status": "aberto",
+      "criadoPor": "Carlos Silva"
+    },
+    {
+      "id": "2",
+      "titulo": "Erro de conexão com o banco",
+      "descricao": "A API local está retornando erro 500 ao tentar conectar no banco de homologação.",
+      "prioridade": "critica",
+      "status": "em_andamento",
+      "criadoPor": "Ana Souza"
+    },
+    {
+      "id": "3",
+      "titulo": "Troca de teclado",
+      "descricao": "A tecla 'Enter' do teclado do suporte parou de funcionar.",
+      "prioridade": "baixa",
+      "status": "concluido",
+      "criadoPor": "Marcos Lima"
+    }
+  ]
+}
