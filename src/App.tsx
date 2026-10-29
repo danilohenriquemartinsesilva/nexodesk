@@ -4,9 +4,14 @@ import ListaChamados from './components/ListaChamados';
 import Filtros from './components/Filtros';
 import FormularioChamado from './components/FormularioChamado';
 import DetalhesChamado from './components/DetalhesChamado';
-import { buscarChamados, criarChamado } from './services/chamadosService';
+import {
+  atualizarChamado,
+  buscarChamados,
+  criarChamado,
+  excluirChamado,
+} from './services/chamadosService';
 import { filtrarChamados } from './utils/filtrarChamados';
-import type { Chamado, NovoChamado } from './types/chamado';
+import type { Chamado, NovoChamado, StatusChamado } from './types/chamado';
 
 function App() {
   const [chamados, setChamados] = useState<Chamado[]>([]);
@@ -37,6 +42,11 @@ function App() {
     carregarChamados();
   }, []);
 
+  function mostrarSucesso(texto: string) {
+    setMensagemSucesso(texto);
+    setTimeout(() => setMensagemSucesso(''), 3000);
+  }
+
   async function criar(novoChamado: NovoChamado) {
     setMensagemErro('');
 
@@ -44,11 +54,34 @@ function App() {
       const chamadoCriado = await criarChamado(novoChamado);
       setChamados([...chamados, chamadoCriado]);
       setMostrarFormulario(false);
-
-      setMensagemSucesso('Chamado criado com sucesso!');
-      setTimeout(() => setMensagemSucesso(''), 3000);
+      mostrarSucesso('Chamado criado com sucesso!');
     } catch {
       setMensagemErro('Não foi possível criar o chamado. Tente novamente.');
+    }
+  }
+
+  async function mudarStatus(id: string, status: StatusChamado) {
+    setMensagemErro('');
+
+    try {
+      const chamadoAtualizado = await atualizarChamado(id, { status });
+      setChamados(chamados.map((c) => (c.id === id ? chamadoAtualizado : c)));
+      mostrarSucesso('Status atualizado com sucesso!');
+    } catch {
+      setMensagemErro('Não foi possível atualizar o status. Tente novamente.');
+    }
+  }
+
+  async function excluir(id: string) {
+    setMensagemErro('');
+
+    try {
+      await excluirChamado(id);
+      setChamados(chamados.filter((c) => c.id !== id));
+      setIdSelecionado(null);
+      mostrarSucesso('Chamado excluído com sucesso!');
+    } catch {
+      setMensagemErro('Não foi possível excluir o chamado. Tente novamente.');
     }
   }
 
@@ -105,6 +138,8 @@ function App() {
             <DetalhesChamado
               chamado={chamadoSelecionado}
               aoFechar={() => setIdSelecionado(null)}
+              aoMudarStatus={mudarStatus}
+              aoExcluir={excluir}
             />
           )}
 
