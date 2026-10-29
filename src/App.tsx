@@ -101,73 +101,82 @@ function App() {
   const chamadoSelecionado = chamados.find((c) => c.id === idSelecionado);
 
   return (
-    <main>
+    <>
       <header>
-        <h1>NexoDesk</h1>
-        <p>Central de chamados internos</p>
+        <img src="/favicon.svg" alt="" width="40" height="40" />
+        <div>
+          <h1>NexoDesk</h1>
+          <p>Central de chamados internos</p>
+        </div>
       </header>
 
-      {mensagemSucesso && <p role="status">{mensagemSucesso}</p>}
-      {mensagemErro && <p role="alert">{mensagemErro}</p>}
+      <main>
+        {mensagemSucesso && <p role="status">{mensagemSucesso}</p>}
+        {mensagemErro && <p role="alert">{mensagemErro}</p>}
 
-      {carregando && <p role="status">Carregando chamados...</p>}
+        {carregando && <p role="status">Carregando chamados...</p>}
 
-      {erro && (
-        <div role="alert">
-          <p>{erro}</p>
-          <p>Verifique se a API está rodando na porta 3001 e recarregue a página.</p>
-        </div>
-      )}
+        {erro && (
+          <div role="alert">
+            <p>{erro}</p>
+            <p>Verifique se a API está rodando na porta 3001 e recarregue a página.</p>
+          </div>
+        )}
 
-      {!carregando && !erro && (
-        <>
-          <ResumoChamados chamados={chamados} />
+        {!carregando && !erro && (
+          <>
+            <ResumoChamados chamados={chamados} />
 
-          {mostrarFormulario ? (
-            <FormularioChamado
-              aoSalvar={criar}
-              aoCancelar={() => setMostrarFormulario(false)}
-            />
-          ) : (
-            <button type="button" onClick={() => setMostrarFormulario(true)}>
-              Novo chamado
-            </button>
-          )}
+            {mostrarFormulario ? (
+              <FormularioChamado
+                aoSalvar={criar}
+                aoCancelar={() => setMostrarFormulario(false)}
+              />
+            ) : (
+              <button type="button" onClick={() => setMostrarFormulario(true)}>
+                Novo chamado
+              </button>
+            )}
 
-          {chamadoSelecionado && (
-            <DetalhesChamado
-              chamado={chamadoSelecionado}
-              aoFechar={() => setIdSelecionado(null)}
-              aoMudarStatus={mudarStatus}
-              aoExcluir={excluir}
-            />
-          )}
+            {chamadoSelecionado && (
+              <DetalhesChamado
+                chamado={chamadoSelecionado}
+                aoFechar={() => setIdSelecionado(null)}
+                aoMudarStatus={mudarStatus}
+                aoExcluir={excluir}
+              />
+            )}
 
-          <section>
-            <h2>Chamados</h2>
+            <section>
+              <h2>Chamados</h2>
 
-            <Filtros
-              busca={busca}
-              status={filtroStatus}
-              prioridade={filtroPrioridade}
-              aoMudarBusca={setBusca}
-              aoMudarStatus={setFiltroStatus}
-              aoMudarPrioridade={setFiltroPrioridade}
-              aoLimpar={limparFiltros}
-            />
+              <Filtros
+                busca={busca}
+                status={filtroStatus}
+                prioridade={filtroPrioridade}
+                aoMudarBusca={setBusca}
+                aoMudarStatus={setFiltroStatus}
+                aoMudarPrioridade={setFiltroPrioridade}
+                aoLimpar={limparFiltros}
+              />
 
-            <p>
-              Exibindo {chamadosFiltrados.length} de {chamados.length}
-            </p>
+              <p>
+                Exibindo {chamadosFiltrados.length} de {chamados.length}
+              </p>
 
-            <ListaChamados
-              chamados={chamadosFiltrados}
-              aoSelecionar={setIdSelecionado}
-            />
-          </section>
-        </>
-      )}
-    </main>
+              <ListaChamados
+                chamados={chamadosFiltrados}
+                aoSelecionar={setIdSelecionado}
+              />
+            </section>
+          </>
+        )}
+      </main>
+
+      <footer>
+        <p>NexoDesk · Desafio técnico para a WSY Labs · Danilo Henrique Martins e Silva</p>
+      </footer>
+    </>
   );
 }
 

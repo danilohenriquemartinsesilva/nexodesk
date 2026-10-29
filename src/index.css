@@ -72,3 +72,37 @@ textarea:focus {
   outline: 3px solid #1B663E;
   outline-offset: 2px;
 }
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  color: white;
+  background-color: #1B663E;
+  border-bottom: 4px solid #99CC33;
+}
+
+header p {
+  margin: 0;
+}
+
+main {
+  max-width: 1000px;
+  min-height: 70vh;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+footer {
+  padding: 15px;
+  font-size: 14px;
+  text-align: center;
+  color: white;
+  background-color: #1B663E;
+}
+
+footer p {
+  margin: 0;
+}
+
