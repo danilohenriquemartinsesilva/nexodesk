@@ -263,3 +263,27 @@ form button {
 .detalhes button {
   margin-right: 8px;
 }
+
+@media (max-width: 800px) {
+  .filtros div:first-child {
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 22px;
+  }
+
+  main {
+    padding: 12px;
+  }
+
+  .filtros div {
+    min-width: 100%;
+  }
+
+  .detalhes select {
+    max-width: none;
+  }
+}
