@@ -1,28 +1,59 @@
 {
-  "chamados": [
+  "tickets": [
     {
       "id": "1",
       "titulo": "Instalação do VS Code",
       "descricao": "O notebook do novo estagiário precisa da instalação do VS Code e do Node.js.",
+      "nomeSolicitante": "Carlos Silva",
+      "email": "carlos.silva@nexotech.com",
+      "setor": "TI",
       "prioridade": "alta",
       "status": "aberto",
-      "criadoPor": "Carlos Silva"
+      "dataCriacao": "2026-10-20T09:30:00.000Z"
     },
     {
       "id": "2",
       "titulo": "Erro de conexão com o banco",
       "descricao": "A API local está retornando erro 500 ao tentar conectar no banco de homologação.",
-      "prioridade": "critica",
+      "nomeSolicitante": "Ana Souza",
+      "email": "ana.souza@nexotech.com",
+      "setor": "Operações",
+      "prioridade": "alta",
       "status": "em_andamento",
-      "criadoPor": "Ana Souza"
+      "dataCriacao": "2026-10-22T14:10:00.000Z"
     },
     {
       "id": "3",
       "titulo": "Troca de teclado",
-      "descricao": "A tecla 'Enter' do teclado do suporte parou de funcionar.",
+      "descricao": "A tecla Enter do teclado do suporte parou de funcionar.",
+      "nomeSolicitante": "Marcos Lima",
+      "email": "marcos.lima@nexotech.com",
+      "setor": "Vendas",
       "prioridade": "baixa",
       "status": "concluido",
-      "criadoPor": "Marcos Lima"
+      "dataCriacao": "2026-10-18T11:00:00.000Z"
+    },
+    {
+      "id": "4",
+      "titulo": "Acesso ao sistema de folha",
+      "descricao": "Preciso de acesso ao sistema de folha de pagamento para fechar o mês.",
+      "nomeSolicitante": "Juliana Costa",
+      "email": "juliana.costa@nexotech.com",
+      "setor": "RH",
+      "prioridade": "media",
+      "status": "aberto",
+      "dataCriacao": "2026-10-25T16:45:00.000Z"
+    },
+    {
+      "id": "5",
+      "titulo": "Lâmpada queimada na sala 2",
+      "descricao": "A lâmpada da sala de reuniões 2 queimou e precisa ser trocada.",
+      "nomeSolicitante": "Pedro Alves",
+      "email": "pedro.alves@nexotech.com",
+      "setor": "Financeiro",
+      "prioridade": "baixa",
+      "status": "em_andamento",
+      "dataCriacao": "2026-10-26T08:15:00.000Z"
     }
   ]
 }
