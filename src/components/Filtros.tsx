@@ -18,7 +18,7 @@ function Filtros({
   aoLimpar,
 }: FiltrosProps) {
   return (
-    <div>
+    <div className="filtros">
       <div>
         <label htmlFor="busca">Buscar por título</label>
         <input
@@ -57,7 +57,7 @@ function Filtros({
         </select>
       </div>
 
-      <button type="button" onClick={aoLimpar}>
+      <button type="button" className="botao-claro" onClick={aoLimpar}>
         Limpar filtros
       </button>
     </div>

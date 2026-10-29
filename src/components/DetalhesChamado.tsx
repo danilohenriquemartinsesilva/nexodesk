@@ -22,7 +22,7 @@ function DetalhesChamado({
   }
 
   return (
-    <section aria-labelledby="titulo-detalhes">
+    <section className="detalhes" aria-labelledby="titulo-detalhes">
       <h2 id="titulo-detalhes">Detalhes do chamado</h2>
 
       <h3>{chamado.titulo}</h3>
@@ -65,10 +65,10 @@ function DetalhesChamado({
         </select>
       </div>
 
-      <button type="button" onClick={confirmarExclusao}>
+      <button type="button" className="botao-excluir" onClick={confirmarExclusao}>
         Excluir chamado
       </button>
-      <button type="button" onClick={aoFechar}>
+      <button type="button" className="botao-claro" onClick={aoFechar}>
         Fechar
       </button>
     </section>

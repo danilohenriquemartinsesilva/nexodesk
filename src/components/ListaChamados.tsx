@@ -10,7 +10,7 @@ interface ListaChamadosProps {
 function ListaChamados({ chamados, aoSelecionar }: ListaChamadosProps) {
   if (chamados.length === 0) {
     return (
-      <div>
+      <div className="vazio">
         <h3>Nenhum chamado encontrado</h3>
         <p>Tente mudar os filtros ou cadastre um novo chamado.</p>
       </div>
@@ -18,7 +18,7 @@ function ListaChamados({ chamados, aoSelecionar }: ListaChamadosProps) {
   }
 
   return (
-    <ul>
+    <ul className="lista">
       {chamados.map((chamado) => (
         <li key={chamado.id}>
           <h3>{chamado.titulo}</h3>
@@ -26,7 +26,7 @@ function ListaChamados({ chamados, aoSelecionar }: ListaChamadosProps) {
           <p>Prioridade: {nomesPrioridade[chamado.prioridade]}</p>
           <p>Status: {nomesStatus[chamado.status]}</p>
           <p>Criado em: {formatarData(chamado.dataCriacao)}</p>
-          <button type="button" onClick={() => aoSelecionar(chamado.id)}>
+          <button type="button" className="botao-claro" onClick={() => aoSelecionar(chamado.id)}>
             Ver detalhes
           </button>
         </li>

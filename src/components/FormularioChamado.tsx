@@ -141,7 +141,7 @@ function FormularioChamado({ aoSalvar, aoCancelar }: FormularioChamadoProps) {
       <button type="submit" disabled={salvando}>
         {salvando ? 'Salvando...' : 'Salvar chamado'}
       </button>
-      <button type="button" onClick={aoCancelar}>
+      <button type="button" className="botao-claro" onClick={aoCancelar}>
         Cancelar
       </button>
     </form>

@@ -106,3 +106,160 @@ footer p {
   margin: 0;
 }
 
+.botao-claro {
+  color: #1B663E;
+  background-color: white;
+  border: 1px solid #1B663E;
+}
+
+.botao-claro:hover {
+  background-color: #eef6e0;
+}
+
+.botao-excluir {
+  background-color: #b91c1c;
+}
+
+.botao-excluir:hover {
+  background-color: #8f1414;
+}
+
+.mensagem {
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+
+.sucesso {
+  color: #1B663E;
+  background-color: #eef6e0;
+  border: 1px solid #99CC33;
+}
+
+.erro {
+  color: #b91c1c;
+  background-color: #fdecec;
+  border: 1px solid #f5b5b5;
+}
+
+.resumo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.resumo article {
+  flex: 1;
+  min-width: 140px;
+  padding: 15px;
+  background-color: white;
+  border: 1px solid #cccccc;
+  border-top: 4px solid #99CC33;
+}
+
+.resumo p {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+}
+
+.resumo strong {
+  display: block;
+  font-size: 32px;
+  font-weight: 300;
+  color: #1B663E;
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.filtros div {
+  flex: 1;
+  min-width: 160px;
+}
+
+.lista {
+  padding: 0;
+  list-style: none;
+}
+
+.lista li {
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: white;
+  border: 1px solid #cccccc;
+  border-left: 5px solid #1B663E;
+}
+
+.lista p {
+  margin: 3px 0;
+  font-size: 14px;
+  color: #555555;
+}
+
+.lista button {
+  margin-top: 10px;
+}
+
+.vazio {
+  padding: 30px;
+  text-align: center;
+  background-color: white;
+  border: 1px dashed #999999;
+}
+
+form {
+  max-width: 560px;
+  padding: 20px;
+  margin: 15px 0;
+  background-color: white;
+  border: 1px solid #cccccc;
+}
+
+form div {
+  margin-bottom: 12px;
+}
+
+form p {
+  margin: 4px 0 0 0;
+  font-size: 13px;
+  color: #b91c1c;
+}
+
+form button {
+  margin-right: 8px;
+}
+
+.detalhes {
+  padding: 20px;
+  margin: 15px 0;
+  background-color: white;
+  border: 1px solid #cccccc;
+  border-top: 4px solid #99CC33;
+}
+
+.detalhes dt {
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.detalhes dd {
+  margin-left: 0;
+}
+
+.detalhes div {
+  margin: 15px 0;
+}
+
+.detalhes select {
+  max-width: 280px;
+}
+
+.detalhes button {
+  margin-right: 8px;
+}

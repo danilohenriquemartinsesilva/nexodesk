@@ -111,13 +111,13 @@ function App() {
       </header>
 
       <main>
-        {mensagemSucesso && <p role="status">{mensagemSucesso}</p>}
-        {mensagemErro && <p role="alert">{mensagemErro}</p>}
+        {mensagemSucesso && <p className="mensagem sucesso" role="status">{mensagemSucesso}</p>}
+        {mensagemErro && <p className="mensagem erro" role="alert">{mensagemErro}</p>}
 
         {carregando && <p role="status">Carregando chamados...</p>}
 
         {erro && (
-          <div role="alert">
+          <div className="mensagem erro" role="alert">
             <p>{erro}</p>
             <p>Verifique se a API está rodando na porta 3001 e recarregue a página.</p>
           </div>

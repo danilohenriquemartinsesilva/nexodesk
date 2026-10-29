@@ -11,7 +11,7 @@ function ResumoChamados({ chamados }: ResumoChamadosProps) {
   const concluidos = chamados.filter((c) => c.status === 'concluido').length;
 
   return (
-    <section aria-label="Resumo dos chamados">
+    <section className="resumo" aria-label="Resumo dos chamados">
       <article>
         <p>Total</p>
         <strong>{total}</strong>
