@@ -1,13 +1,26 @@
-import type { Chamado } from '../types/chamado';
+import type { Chamado, StatusChamado } from '../types/chamado';
 import { nomesPrioridade, nomesStatus } from '../types/chamado';
 import { formatarData } from '../utils/formatarData';
 
 interface DetalhesChamadoProps {
   chamado: Chamado;
   aoFechar: () => void;
+  aoMudarStatus: (id: string, status: StatusChamado) => void;
+  aoExcluir: (id: string) => void;
 }
 
-function DetalhesChamado({ chamado, aoFechar }: DetalhesChamadoProps) {
+function DetalhesChamado({
+  chamado,
+  aoFechar,
+  aoMudarStatus,
+  aoExcluir,
+}: DetalhesChamadoProps) {
+  function confirmarExclusao() {
+    if (window.confirm('Tem certeza que deseja excluir este chamado?')) {
+      aoExcluir(chamado.id);
+    }
+  }
+
   return (
     <section aria-labelledby="titulo-detalhes">
       <h2 id="titulo-detalhes">Detalhes do chamado</h2>
@@ -35,6 +48,26 @@ function DetalhesChamado({ chamado, aoFechar }: DetalhesChamadoProps) {
         <dd>{formatarData(chamado.dataCriacao)}</dd>
       </dl>
 
+      <div>
+        <label htmlFor="alterar-status">Alterar status</label>
+        <select
+          id="alterar-status"
+          value={chamado.status}
+          onChange={(e) =>
+            aoMudarStatus(chamado.id, e.target.value as StatusChamado)
+          }
+        >
+          {Object.entries(nomesStatus).map(([valor, nome]) => (
+            <option key={valor} value={valor}>
+              {nome}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <button type="button" onClick={confirmarExclusao}>
+        Excluir chamado
+      </button>
       <button type="button" onClick={aoFechar}>
         Fechar
       </button>
