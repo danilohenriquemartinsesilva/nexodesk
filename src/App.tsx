@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import ResumoChamados from './components/ResumoChamados';
 import ListaChamados from './components/ListaChamados';
 import Filtros from './components/Filtros';
-import { buscarChamados } from './services/chamadosService';
+import FormularioChamado from './components/FormularioChamado';
+import { buscarChamados, criarChamado } from './services/chamadosService';
 import { filtrarChamados } from './utils/filtrarChamados';
-import type { Chamado } from './types/chamado';
+import type { Chamado, NovoChamado } from './types/chamado';
 
 function App() {
   const [chamados, setChamados] = useState<Chamado[]>([]);
@@ -14,6 +15,10 @@ function App() {
   const [busca, setBusca] = useState('');
   const [filtroStatus, setFiltroStatus] = useState('todos');
   const [filtroPrioridade, setFiltroPrioridade] = useState('todos');
+
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
+  const [mensagemSucesso, setMensagemSucesso] = useState('');
+  const [mensagemErro, setMensagemErro] = useState('');
 
   useEffect(() => {
     async function carregarChamados() {
@@ -29,6 +34,21 @@ function App() {
 
     carregarChamados();
   }, []);
+
+  async function criar(novoChamado: NovoChamado) {
+    setMensagemErro('');
+
+    try {
+      const chamadoCriado = await criarChamado(novoChamado);
+      setChamados([...chamados, chamadoCriado]);
+      setMostrarFormulario(false);
+
+      setMensagemSucesso('Chamado criado com sucesso!');
+      setTimeout(() => setMensagemSucesso(''), 3000);
+    } catch {
+      setMensagemErro('Não foi possível criar o chamado. Tente novamente.');
+    }
+  }
 
   function limparFiltros() {
     setBusca('');
@@ -50,6 +70,9 @@ function App() {
         <p>Central de chamados internos</p>
       </header>
 
+      {mensagemSucesso && <p role="status">{mensagemSucesso}</p>}
+      {mensagemErro && <p role="alert">{mensagemErro}</p>}
+
       {carregando && <p role="status">Carregando chamados...</p>}
 
       {erro && (
@@ -62,6 +85,17 @@ function App() {
       {!carregando && !erro && (
         <>
           <ResumoChamados chamados={chamados} />
+
+          {mostrarFormulario ? (
+            <FormularioChamado
+              aoSalvar={criar}
+              aoCancelar={() => setMostrarFormulario(false)}
+            />
+          ) : (
+            <button type="button" onClick={() => setMostrarFormulario(true)}>
+              Novo chamado
+            </button>
+          )}
 
           <section>
             <h2>Chamados</h2>
