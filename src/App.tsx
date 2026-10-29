@@ -3,6 +3,7 @@ import ResumoChamados from './components/ResumoChamados';
 import ListaChamados from './components/ListaChamados';
 import Filtros from './components/Filtros';
 import FormularioChamado from './components/FormularioChamado';
+import DetalhesChamado from './components/DetalhesChamado';
 import { buscarChamados, criarChamado } from './services/chamadosService';
 import { filtrarChamados } from './utils/filtrarChamados';
 import type { Chamado, NovoChamado } from './types/chamado';
@@ -17,6 +18,7 @@ function App() {
   const [filtroPrioridade, setFiltroPrioridade] = useState('todos');
 
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
+  const [idSelecionado, setIdSelecionado] = useState<string | null>(null);
   const [mensagemSucesso, setMensagemSucesso] = useState('');
   const [mensagemErro, setMensagemErro] = useState('');
 
@@ -63,6 +65,8 @@ function App() {
     filtroPrioridade,
   );
 
+  const chamadoSelecionado = chamados.find((c) => c.id === idSelecionado);
+
   return (
     <main>
       <header>
@@ -97,6 +101,13 @@ function App() {
             </button>
           )}
 
+          {chamadoSelecionado && (
+            <DetalhesChamado
+              chamado={chamadoSelecionado}
+              aoFechar={() => setIdSelecionado(null)}
+            />
+          )}
+
           <section>
             <h2>Chamados</h2>
 
@@ -114,7 +125,10 @@ function App() {
               Exibindo {chamadosFiltrados.length} de {chamados.length}
             </p>
 
-            <ListaChamados chamados={chamadosFiltrados} />
+            <ListaChamados
+              chamados={chamadosFiltrados}
+              aoSelecionar={setIdSelecionado}
+            />
           </section>
         </>
       )}

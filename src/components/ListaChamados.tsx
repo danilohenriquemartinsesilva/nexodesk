@@ -4,9 +4,10 @@ import { formatarData } from '../utils/formatarData';
 
 interface ListaChamadosProps {
   chamados: Chamado[];
+  aoSelecionar: (id: string) => void;
 }
 
-function ListaChamados({ chamados }: ListaChamadosProps) {
+function ListaChamados({ chamados, aoSelecionar }: ListaChamadosProps) {
   if (chamados.length === 0) {
     return (
       <div>
@@ -25,6 +26,9 @@ function ListaChamados({ chamados }: ListaChamadosProps) {
           <p>Prioridade: {nomesPrioridade[chamado.prioridade]}</p>
           <p>Status: {nomesStatus[chamado.status]}</p>
           <p>Criado em: {formatarData(chamado.dataCriacao)}</p>
+          <button type="button" onClick={() => aoSelecionar(chamado.id)}>
+            Ver detalhes
+          </button>
         </li>
       ))}
     </ul>
