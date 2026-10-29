@@ -11,7 +11,7 @@ function ListaChamados({ chamados }: ListaChamadosProps) {
     return (
       <div>
         <h3>Nenhum chamado encontrado</h3>
-        <p>Os chamados cadastrados aparecerão aqui.</p>
+        <p>Tente mudar os filtros ou cadastre um novo chamado.</p>
       </div>
     );
   }

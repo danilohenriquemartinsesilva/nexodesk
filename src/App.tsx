@@ -1,13 +1,19 @@
 import { useEffect, useState } from 'react';
 import ResumoChamados from './components/ResumoChamados';
 import ListaChamados from './components/ListaChamados';
+import Filtros from './components/Filtros';
 import { buscarChamados } from './services/chamadosService';
+import { filtrarChamados } from './utils/filtrarChamados';
 import type { Chamado } from './types/chamado';
 
 function App() {
   const [chamados, setChamados] = useState<Chamado[]>([]);
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState('');
+
+  const [busca, setBusca] = useState('');
+  const [filtroStatus, setFiltroStatus] = useState('todos');
+  const [filtroPrioridade, setFiltroPrioridade] = useState('todos');
 
   useEffect(() => {
     async function carregarChamados() {
@@ -23,6 +29,19 @@ function App() {
 
     carregarChamados();
   }, []);
+
+  function limparFiltros() {
+    setBusca('');
+    setFiltroStatus('todos');
+    setFiltroPrioridade('todos');
+  }
+
+  const chamadosFiltrados = filtrarChamados(
+    chamados,
+    busca,
+    filtroStatus,
+    filtroPrioridade,
+  );
 
   return (
     <main>
@@ -46,7 +65,22 @@ function App() {
 
           <section>
             <h2>Chamados</h2>
-            <ListaChamados chamados={chamados} />
+
+            <Filtros
+              busca={busca}
+              status={filtroStatus}
+              prioridade={filtroPrioridade}
+              aoMudarBusca={setBusca}
+              aoMudarStatus={setFiltroStatus}
+              aoMudarPrioridade={setFiltroPrioridade}
+              aoLimpar={limparFiltros}
+            />
+
+            <p>
+              Exibindo {chamadosFiltrados.length} de {chamados.length}
+            </p>
+
+            <ListaChamados chamados={chamadosFiltrados} />
           </section>
         </>
       )}
