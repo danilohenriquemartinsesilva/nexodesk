@@ -31,3 +31,11 @@ export const nomesPrioridade: Record<PrioridadeChamado, string> = {
   media: 'Média',
   alta: 'Alta',
 };
+
+export const setores: SetorChamado[] = [
+  'TI',
+  'Financeiro',
+  'RH',
+  'Vendas',
+  'Operações',
+];
