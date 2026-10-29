@@ -4,7 +4,7 @@ Central de chamados internos da NexoTech. Colaboradores abrem chamados de suport
 
 Projeto feito para o desafio técnico de front-end do processo seletivo de estágio da WSY Labs.
 
-Autor: [Seu Nome Completo]
+Autor: Danilo Henrique Martins e Silva
 
 ## Tecnologias
 
@@ -60,6 +60,14 @@ Depois é só abrir o endereço que aparece no terminal (normalmente http://loca
 | DELETE | /tickets/:id | Exclui um chamado |
 
 Os dados ficam no arquivo `db.json`. O JSON Server grava as alterações nesse arquivo, então o que for criado, alterado ou excluído fica salvo nele.
+
+## Testes
+
+```bash
+npm run test
+```
+
+Há testes para o filtro de chamados e para a validação do formulário.
 
 ## Estrutura
 
